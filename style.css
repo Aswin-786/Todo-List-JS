@@ -1,1 +1,60 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+h1 {
+  text-align: center;
+  font-size: 5rem;
+  color: rgb(157, 141, 173);
+}
+
+input {
+  border: none;
+  background-color: aliceblue;
+  outline: none;
+  padding: 1rem;
+  width: 400px;
+  font-size: 1.6rem;
+  
+}
+
+form {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+}
+
+input::placeholder {
+  font-size: 1.5rem;
+  color: grey;
+}
+
+#list {
+  background-color: aliceblue;
+  padding:0;
+  margin: 0;
+  
+}
+
+ul li {
+ background-color: aliceblue;
+ padding: 1rem 2rem;
+ border-top: 1px solid #383131;
+ width: 400px;
+ overflow: auto;
+
+}
+
+.completed {
+  text-decoration: line-through;
+  color: red;
+  opacity: 0.9;
+}
