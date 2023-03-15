@@ -1,4 +1,4 @@
-#Todo List App
+# Todo List App
 
 This is a simple todo list app built using JavaScript and HTML. The app allows you to add and remove tasks, and it stores your tasks in local storage so you can access them even after closing the app.
 
