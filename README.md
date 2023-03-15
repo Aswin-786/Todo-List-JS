@@ -1,7 +1,12 @@
-# Todo-List-JS
+#Todo List App
 
-Hey everyone,
+This is a simple todo list app built using JavaScript and HTML. The app allows you to add and remove tasks, and it stores your tasks in local storage so you can access them even after closing the app.
 
-I'm excited to share my latest project - a todo list app built using JavaScript! With this app, you can easily create and manage your daily tasks, making sure you don't forget anything important.
+<h1>Usage</h1>
+To use the app, simply open index.html in your web browser. You can add a new task by typing in the input field and pressing Enter. To remove a task, click on the task's "X" button.
 
-Using JavaScript, I was able to create a user-friendly interface and incorporate features such as task prioritization and due dates. I also used HTML and CSS to style the app and make it visually appealing.
+<h1>Local Storage</h1>
+The app uses local storage to save your tasks, so you don't have to worry about losing them if you close the app. When you open the app again, your tasks will be loaded from local storage.
+
+<h1>Contributing</h1>
+Contributions are welcome! If you have any suggestions or bug reports, please submit them as issues on the GitHub repository.
