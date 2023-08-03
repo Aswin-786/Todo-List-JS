@@ -1,84 +1,74 @@
-const form = document.getElementById('form')
-const input = document.getElementById('input')
-const list = document.getElementById('list')
+// Get references to the DOM elements
+const form = document.getElementById('form');
+const input = document.getElementById('input');
+const list = document.getElementById('list');
 
-const saved = JSON.parse(localStorage.getItem("saved"))
+// Load saved tasks from local storage
+const saved = JSON.parse(localStorage.getItem('saved'));
 
-if(saved) {
- saved.forEach((saved) => {
-   addList(saved)
- })
+// Add saved tasks to the list if there are any
+if (saved) {
+  saved.forEach((savedTask) => {
+    addList(savedTask);
+  });
 }
 
-
+// Add event listener for form submit
 form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  addList();
+});
 
- e.preventDefault()
+// Function to add a new task to the list
+function addList(savedTask) {
+  let text = input.value;
 
- addList()
+  // Use the saved task's text if provided
+  if (savedTask) {
+    text = savedTask.text;
+  }
 
-})
+  // Check if the task text is not empty
+  if (text) {
+    const todo = document.createElement('li');
 
-function addList(saved) {
+    // Add 'completed' class if the task was completed
+    if (savedTask && savedTask.completed) {
+      todo.classList.add('completed');
+    }
 
+    todo.innerText = text;
+    list.appendChild(todo);
+    input.value = '';
 
- let text = input.value
- console.log('entered')
+    // Toggle 'completed' class when the task is clicked
+    todo.addEventListener('click', () => {
+      todo.classList.toggle('completed');
+      updateStorage();
+    });
 
- if(saved) {
-   text = saved.text
- }
+    // Remove the task when right-clicked
+    todo.addEventListener('contextmenu', (e) => {
+      e.preventDefault();
+      todo.remove();
+      updateStorage();
+    });
 
- // ithu namk completed ayahtind tick pokathe refresh cheythalam undkan vendi aanu.allengil ith completed
- // aanengil red line varum but refresh cheymbo varilla
- 
- if(text) {
-   const todo = document.createElement('li')
-
-   if(saved && saved.completed) {
-     todo.classList.add('completed')
-   }
-   todo.innerText = text
-   list.appendChild(todo)
-   input.value = ''
-
-
-
-   todo.addEventListener('click', () => {
-     todo.classList.toggle('completed')
-     updateStorage()
-   })
-
-
-
-   todo.addEventListener('contextmenu', (e) => {
-     e.preventDefault();
-
-     todo.remove()
-
-     updateStorage()
-
-   })
-
-   updateStorage()
- }
+    updateStorage();
+  }
 }
 
-
+// Function to update local storage with the current tasks
 function updateStorage() {
- const listEl = document.querySelectorAll('li')
+  const listItems = document.querySelectorAll('li');
+  const savedTasks = [];
 
- const saved = []
+  listItems.forEach((listItem) => {
+    savedTasks.push({
+      text: listItem.innerText,
+      completed: listItem.classList.contains('completed'),
+    });
+  });
 
- listEl.forEach((listEl) => {
-   saved.push({
-     text:listEl.innerText,
-
-     completed:listEl.classList.contains('completed')
-   })
- })
-
- localStorage.setItem("saved", JSON.stringify(saved))
-
-
+  localStorage.setItem('saved', JSON.stringify(savedTasks));
 }
